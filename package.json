@@ -1,0 +1,40 @@
+{
+  "name": "hpdf.js",
+  "preferGlobal": "false",
+  "version": "0.0.3",
+  "author": {
+    "name": "Manuel",
+    "email": "manuel.schoelling@gmx.de"
+  },
+  "description": "A fork of mainline hpdfs.js to allow page rotation and the a6 paper size",
+  "contributors": [
+    {
+      "name": "Manuel",
+      "email": "manuel.schoelling@gmx.de"
+    },
+    {
+      "name": "Strix",
+      "email": "strix@ekhayaict.com"
+    }
+  ],
+  "main": "./",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/awarenetdev/hpdf.js.git"
+  },
+  "keywords": [
+    "pdf"
+  ],
+  "analyze": false,
+  "license": "ZLIB/LIBPNG",
+  "engines": {
+    "node": ">=0.6"
+  },
+  "readme": "hpdf.js\n=======\n\nCreate PDFs in your browser (port of libharu)\n[See the demo page](http://manuels.github.com/hpdf.js/)\n\n\nWhy?\n====\n\nBecause other projects with the same goal lack a lot of features (e.g. custom fonts).\n\n\nFeatures\n========\n- Custom Fonts (Type1 and TTF)\n- PNG, JPG and RAW images\n- Password encryption\n- Text and Link Annotations\n- Outlines\n- Drawing function (lines, cycles etc.)\n- Encoding support\n\n\nHow to use\n==========\n\nInclude `hpdf.js` or `hpdf.min.js` in your HTML file and [see examples](http://manuels.github.com/hpdf.js/) or [libharu API reference](https://github.com/libharu/libharu/wiki)\n\n\nAPI naming convention\n=====================\n\n- Function names are like their [libharu API](https://github.com/libharu/libharu/wiki) pendants but object-oriented and their first letter is lowercase.\n```\n    // javascript code                           // C code\n    var pdf = new HPDF();                        HPDF_Doc pdf = HPDF_New (error_handler, NULL);\n    var page = pdf.addPage();                    HPDF_Page page = HPDF_AddPage(pdf);\n    pdf.free();                                  HPDF_Free(pdf);\n```\n\n- ``Get`` in the function name is ommitted and ``Set`` is kept\n```\n    // javascript code                           // C code\n    var width = page.width();                    HPDF_REAL width = HPDF_Page_GetWidth(page);\n    page.setLineWidth(5);                        HPDF_Page_SetLineWidth(page, 5);\n```\n\n- Use ``undefined`` in Javascript where you would use ``NULL`` in C\n```\n    // javascript code                           // C code\n    var root = pdf.createOutline(undefined,      root = HPDF_CreateOutline (pdf, NULL, \"OutlineRoot\", NULL);\n       \"OutlineRoot\", undefined);\n```\n\n- Use strings (case irrelevant) in Javascript where you would use constants in C\n```\n    // javascript code                           // C code\n    page.setSize('B5', 'landscape');             HPDF_Page_SetSize(page, HPDF_PAGE_SIZE_B5, HPDF_PAGE_LANDSCAPE);\n```\n\n- Tailing ``NULL``/``undefined`` can be ommitted\n```\n    // javascript code                           // C code\n    var font = pdf.font('Helvetica');            HPDF_Font font = HPDF_PDF_GetFont(pdf, 'Helvetica', NULL);\n```\n\n- Instead of calling a error handler in C, an ``Exception`` is thrown in Javascript\n\n\nDependencies\n============\n\nNone. You just need [emscripten](https://github.com/kripken/emscripten) and [CoffeeScript](http://www.coffeescript.org/) if you want to help developing hpdf.js\n\n\nHow to compile (for devs only)\n===============================\n\n1. Configure libhaku\n``cmake ./libharu``\n\n1. Configure libpng\n``cd ./libpng; cmake .; cd ..``\n\n2. Compile hpdf.js\n``./compile.sh``\n(You might want to change some paths in this bash script!)\n\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/awarenetdev/hpdf.js/issues"
+  },
+  "_id": "hpdf.js@0.0.3",
+  "_from": "hpdf.js@"
+}
