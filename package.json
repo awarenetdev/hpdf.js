@@ -1,7 +1,7 @@
 {
   "name": "hpdf.js",
   "preferGlobal": "false",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": {
     "name": "Manuel",
     "email": "manuel.schoelling@gmx.de"
@@ -35,6 +35,6 @@
   "bugs": {
     "url": "https://github.com/awarenetdev/hpdf.js/issues"
   },
-  "_id": "hpdf.js@0.0.6",
+  "_id": "hpdf.js@0.0.7",
   "_from": "hpdf.js@"
 }
